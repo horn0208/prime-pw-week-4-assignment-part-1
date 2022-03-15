@@ -146,7 +146,7 @@ function squareDigits(num){
   //convert num to a string, then for every character turn it into an item in an array of numbers--thanks, StackOverflow!
   let numArray = Array.from(num.toString()).map(Number);
     //console.log('numArray is:', numArray);
-  for (i in numArray) {
+  for (let i in numArray) {
     numArray[i] *= numArray[i]; //loop through array and square all the numbers
   } return Number(numArray.join('')) //smash numbers together into a string, convert to a single number, and return it
 }
