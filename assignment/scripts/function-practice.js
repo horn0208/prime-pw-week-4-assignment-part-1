@@ -105,19 +105,49 @@ console.log( 'isFirstLetter - should say true', isFirstLetter('a', 'apple') );
 console.log( 'isFirstLetter - should say false', isFirstLetter('z', 'apple') );
 
 // 9. Function to return the sum of all numbers in an array
-function sumAll( ) {
+function sumAll(arr) {
   let sum = 0
   // TODO: loop to add items
-  
+  for (let i=0; i<arr.length; i++) {
+    //making sure that item is a number. if so, add to sum
+    if (typeof arr[i] === 'number') {
+    sum += arr[i];
+    }
+  }
   return sum;
 }
+console.log('sumAll([1, 2, 0, 8, 10]) should return 21', sumAll([1, 2, 0, 8, 10]));
+console.log('sumAll([-1, 2, 0, 100, 10]) should return 111', sumAll([-1, 2, 0, 100, 10]));
+console.log('sumAll([1, "nope", true, 8, 10]) should return 19', sumAll([1, "nope", true, 8, 10]));
 
 // 10. Function to return a new array of all positive (greater than zero)
 //     numbers contained in an input array. If there are no positive numbers
 //     return an empty array. Note: The input array should not change.
-
-
+function posNums(arr) {
+  let newArray = [];
+  for (let i=0; i<arr.length; i++) {
+    if (typeof arr[i] === 'number' && arr[i] > 0) {
+      newArray.push(arr[i]);
+    }
+  } return newArray;
+}
+console.log('posNums([-1, 2, 0, -100, 10]) should return [2, 10]', posNums([-1, 2, 0, -100, 10]));
+console.log('posNums([true, 2, "blah", -100, 90]) should return [2, 90]', posNums([true, 2, "blah", -100, 90]));
 
 // 11. Pick a problem from Edabit(https://edabit.com/) or 
 //     CodeWars(https://www.codewars.com/). Then describe it 
 //     here in a comment, write the function, and test it!
+
+// Square every digit of a number and concatenate them.
+// For example, if we run 9119 through the function, 811181 will come out, because 92 is 81 and 12 is 1.
+// Note: The function accepts an integer and returns an integer
+
+function squareDigits(num){
+  //convert num to a string, then for every character turn it into an item in an array of numbers--thanks, StackOverflow!
+  let numArray = Array.from(num.toString()).map(Number);
+    //console.log('numArray is:', numArray);
+  for (i in numArray) {
+    numArray[i] *= numArray[i]; //loop through array and square all the numbers
+  } return Number(numArray.join('')) //smash numbers together into a string, convert to a single number, and return it
+}
+console.log('squareDigits with 2219:', squareDigits(2219));
