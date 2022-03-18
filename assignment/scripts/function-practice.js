@@ -33,7 +33,7 @@ console.log('Test--addNumbers with -5 and 3, should be -2:', addNumbers(-5,3));
 function multiplyThree(num1, num2, num3 ){
   return num1*num2*num3;
 }
-console.log('Test--multiplyThree with 2, 10, -8 should return -160:', multiplyThree(2,10,-8));
+console.log('Test--multiplyThree(2,10,-8) should return -160:', multiplyThree(2,10,-8));
 
 // 5. Function that will return true if a number is positive, 
 //    or greater than zero, and false otherwise
@@ -46,9 +46,9 @@ function isPositive( number ) {
 }
 // Call the function to test each outcome (true & false) 
 // Write a separate console.log statement for each outcome
-console.log( 'isPositive - should say true', isPositive(3) );
-console.log( 'isPositive - should say false', isPositive(0) );
-console.log( 'isPositive - should say false', isPositive(-3) );
+console.log( 'isPositive(3) - should say true', isPositive(3) );
+console.log( 'isPositive(0) - should say false', isPositive(0) );
+console.log( 'isPositive(-3) - should say false', isPositive(-3) );
 
 
 // 6. Function to return the _last_ item in an array. If the 
@@ -65,12 +65,11 @@ console.log('getLast for [ "blue heron" ]:', getLast([ 'blue heron' ]));
 //    DO NOT use Array.includes, Array.indexOf, or Array.find 
 
 function find( value, array ){
-  let answer = false;//default to false unless value matches array item
   for (let i in array){
     if (value === array[i]){
-      answer = true;//modify answer to true if match is found
+      return true;//if value matches on any iteration, this will return true and break out of function
     } 
-  } return answer;
+  } return false;//if value never matches in array, will return false
 }
 
 // first solution to question:
@@ -106,10 +105,11 @@ console.log( 'isFirstLetter - should say false', isFirstLetter('z', 'apple') );
 
 // 9. Function to return the sum of all numbers in an array
 function sumAll(arr) {
+  //Declare variable for sum outside of loop
   let sum = 0
-  // TODO: loop to add items
+  // loop through array
   for (let i=0; i<arr.length; i++) {
-    //making sure that item is a number. if so, add to sum
+    // make sure that item is a number. if so, add to sum
     if (typeof arr[i] === 'number') {
     sum += arr[i];
     }
